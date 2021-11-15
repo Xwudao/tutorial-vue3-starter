@@ -6,6 +6,7 @@ import { createPinia } from 'pinia';
 import '@/assets/styles/app.scss';
 
 const pinia = createPinia();
+import '@purge-icons/generated'; // <-- This
 
 const app = createApp(App);
 app.use(router).use(pinia);
