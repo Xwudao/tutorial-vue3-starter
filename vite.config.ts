@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import * as path from 'path';
-
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 const resolve = (p: string) => {
   return path.resolve(__dirname, p);
 };
@@ -12,5 +13,10 @@ export default defineConfig({
       '@': resolve('./src'),
     },
   },
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+  ],
 });
