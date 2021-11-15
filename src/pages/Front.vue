@@ -5,6 +5,8 @@
 
   const countStore = useCountStore();
   const refCount = storeToRefs(countStore);
+  console.log(import.meta.env.VITE_API_URL);
+  //axios，开启从零搭建一个admin template
 </script>
 
 <template>
