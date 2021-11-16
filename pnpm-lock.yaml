@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@element-plus/icons': ^0.0.11
   '@iconify/iconify': ^2.1.0
   '@iconify/json': ^1.1.428
   '@types/node': 14.17.4
@@ -28,6 +29,7 @@ specifiers:
   vue-tsc: ^0.3.0
 
 dependencies:
+  '@element-plus/icons': 0.0.11
   '@iconify/iconify': 2.1.0
   element-plus: 1.2.0-beta.3_vue@3.2.21
   pinia: 2.0.3_typescript@4.4.4+vue@3.2.21

@@ -1,0 +1,9 @@
+html,
+body {
+  //tailwind, w-full h-full，tailwindcss 提供的css原子类
+  @apply w-full h-full;
+}
+
+#app {
+  @apply w-full h-full;
+}
