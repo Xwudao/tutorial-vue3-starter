@@ -1,7 +1,8 @@
 <script lang="ts" setup="setup">
   import AppIcon from '@/components/common/AppIcon.vue';
   import { computed, ref } from 'vue';
-  import { Location, Menu as IconMenu, Setting, Document } from '@element-plus/icons';
+  import { Setting, UserFilled } from '@element-plus/icons';
+  import { useRouter } from 'vue-router';
 
   const asideWidth = ref('200px');
 
@@ -11,101 +12,72 @@
   const collapse = computed(() => {
     return asideWidth.value !== '200px';
   });
+  const router = useRouter();
+  //hooks, vue 全面ts, hook react，解耦
+  const handleMenuChange = (index: string) => {
+    switch (index) {
+      case '1':
+        router.push({ name: 'Dashboard' });
+        break;
+      case '2-1':
+        router.push({ name: 'UserList' });
+        break;
+    }
+  };
+  //axios,
 </script>
 
 <template>
   <el-container class="wrapper">
-    <el-aside :width="asideWidth" class="left-aside">
-      <div class="aside-logo">
-        <div class="text">{{ collapse ? '无' : '后台模板' }}</div>
+    <el-header class="top-header">
+      <div class="left-header">
+        <div class="text-black flex items-center" @click="handleAsideChange">
+          <app-icon icon="ant-design:menu-fold-outlined" class="text-2xl cursor-pointer" />
+        </div>
+        <div class="site-title">无道后台管理系统</div>
       </div>
-      <!--      <div class="aside-menus">-->
-      <transition name="el-fade-in-linear">
-        <el-menu default-active="2" :collapse="collapse" class="aside-menus transition-all">
-          <el-sub-menu index="1">
-            <template #title>
-              <el-icon><location /></el-icon>
-              <span>Navigator One</span>
-            </template>
-            <el-menu-item-group title="Group One">
-              <el-menu-item index="1-1">item one</el-menu-item>
-              <el-menu-item index="1-2">item one</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="Group Two">
-              <el-menu-item index="1-3">item three</el-menu-item>
-            </el-menu-item-group>
-            <el-sub-menu index="1-4">
-              <template #title>item four</template>
-              <el-menu-item index="1-4-1">item one</el-menu-item>
-            </el-sub-menu>
-          </el-sub-menu>
-          <el-menu-item index="2">
-            <el-icon><icon-menu /></el-icon>
-            <span>Navigator Two</span>
-          </el-menu-item>
-          <el-menu-item index="3" disabled>
-            <el-icon><document /></el-icon>
-            <span>Navigator Three</span>
-          </el-menu-item>
-          <el-menu-item index="4">
+      <div class="right-header">
+        <el-dropdown size="small">
+          <span class="el-dropdown-link">
+            <el-avatar
+              :size="30"
+              src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
+            ></el-avatar>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item>修改密码</el-dropdown-item>
+              <el-dropdown-item>退出</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </div>
+    </el-header>
+    <el-container class="main">
+      <el-aside :width="asideWidth" class="left-aside">
+        <el-menu
+          default-active="2"
+          class="left-menu"
+          :collapse="collapse"
+          @select="handleMenuChange"
+        >
+          <el-menu-item index="1">
             <el-icon><setting /></el-icon>
-            <span>Navigator Four</span>
+            <span>控制面板</span>
           </el-menu-item>
-          <!--          <el-menu-item index="4">-->
-          <!--            <el-icon><setting /></el-icon>-->
-          <!--            <span>Navigator Four</span>-->
-          <!--          </el-menu-item>-->
-          <!--          <el-menu-item index="4">-->
-          <!--            <el-icon><setting /></el-icon>-->
-          <!--            <span>Navigator Four</span>-->
-          <!--          </el-menu-item>-->
-          <!--          <el-menu-item index="4">-->
-          <!--            <el-icon><setting /></el-icon>-->
-          <!--            <span>Navigator Four</span>-->
-          <!--          </el-menu-item>-->
-          <!--          <el-menu-item index="4">-->
-          <!--            <el-icon><setting /></el-icon>-->
-          <!--            <span>Navigator Four</span>-->
-          <!--          </el-menu-item>-->
-          <!--          <el-menu-item index="4">-->
-          <!--            <el-icon><setting /></el-icon>-->
-          <!--            <span>Navigator Four</span>-->
-          <!--          </el-menu-item>-->
+          <el-sub-menu index="2">
+            <template #title>
+              <el-icon><user-filled /></el-icon>
+              <span>用户管理</span>
+            </template>
+            <el-menu-item index="2-1">
+              <span>用户列表</span>
+            </el-menu-item>
+          </el-sub-menu>
         </el-menu>
-      </transition>
-      <!--      </div>-->
-    </el-aside>
-    <el-container class="right-wrapper">
-      <el-header class="right-header">
-        <div class="header-left">
-          <div @click="handleAsideChange" v-if="asideWidth === '200px'">
-            <app-icon icon="ant-design:menu-fold-outlined" class="text-xl cursor-pointer" />
-          </div>
-          <div @click="handleAsideChange" v-else>
-            <app-icon icon="ant-design:menu-unfold-outlined" class="text-xl cursor-pointer" />
-          </div>
-        </div>
-        <div class="header-right">
-          <div class="avatar cursor-pointer">
-            <el-dropdown trigger="click" size="small">
-              <el-avatar
-                alt="Avatar"
-                src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
-              ></el-avatar>
-              <template #dropdown>
-                <el-dropdown-menu>
-                  <el-dropdown-item>修改密码</el-dropdown-item>
-                  <el-dropdown-item>退出</el-dropdown-item>
-                </el-dropdown-menu>
-              </template>
-            </el-dropdown>
-          </div>
-        </div>
-      </el-header>
-      <el-main class="right-main">
-        Main
-
-        <!--        <router-view />-->
+      </el-aside>
+      <el-main>
+        <router-view />
       </el-main>
     </el-container>
   </el-container>
@@ -115,38 +87,25 @@
   .wrapper {
     @apply h-full w-full;
   }
+  .top-header {
+    @apply bg-gray-100 flex items-center justify-between;
 
+    .left-header {
+      @apply flex;
+    }
+    .site-title{
+      @apply font-bold ml-3 text-lg select-none;
+    }
+  }
+  .main {
+    height: calc(100% - 60px);
+    @apply overflow-y-auto bg-gray-200;
+  }
   .left-aside {
-    @apply h-full bg-gray-100 flex flex-col;
-    .aside-logo {
-      @apply text-center h-10 select-none;
-      .text {
-        @apply text-center text-base font-bold py-2 px-4 bg-gray-700 text-white;
-      }
-    }
-    .aside-menus {
-      height: calc(100% - 2.5rem);
-      overflow-y: auto;
-      overflow-x: hidden;
-      //@apply ;
-    }
-  }
-  .right-wrapper {
-    @apply flex-1;
-  }
+    @apply bg-gray-100 transition-all;
 
-  .right-header {
-    @apply bg-indigo-200 flex items-center justify-between;
-
-    .header-left {
-      @apply flex;
+    .left-menu {
+      @apply h-full overflow-x-hidden;
     }
-    .header-right {
-      @apply flex;
-    }
-  }
-
-  .right-main {
-    @apply bg-green-300;
   }
 </style>
