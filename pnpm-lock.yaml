@@ -9,6 +9,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.3.1
   '@vitejs/plugin-vue': ^1.9.3
   autoprefixer: ^10.4.0
+  axios: ^0.24.0
   element-plus: ^1.2.0-beta.3
   eslint: ^8.2.0
   eslint-config-prettier: ^8.3.0
@@ -31,6 +32,7 @@ specifiers:
 dependencies:
   '@element-plus/icons': 0.0.11
   '@iconify/iconify': 2.1.0
+  axios: 0.24.0
   element-plus: 1.2.0-beta.3_vue@3.2.21
   pinia: 2.0.3_typescript@4.4.4+vue@3.2.21
   sass: 1.43.4
@@ -634,6 +636,14 @@ packages:
     transitivePeerDependencies:
       - debug
     dev: true
+
+  /axios/0.24.0:
+    resolution: {integrity: sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==}
+    dependencies:
+      follow-redirects: 1.14.5_debug@4.3.2
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /babel-walk/3.0.0-canary-5:
     resolution: {integrity: sha512-GAwkz0AihzY5bkwIY5QDR+LvsRQgB/B+1foMPvi0FZPMl5fjD7ICiznUiBdLYMH1QYe6vqu4gWYytZOccLouFw==}
@@ -1373,7 +1383,6 @@ packages:
         optional: true
     dependencies:
       debug: 4.3.2
-    dev: true
 
   /fraction.js/4.1.2:
     resolution: {integrity: sha512-o2RiJQ6DZaR/5+Si0qJUIy637QMRudSi9kU/FFzx9EZazrIdnBgpU+3sEWCxAVhH2RtxW2Oz+T4p2o8uOPVcgA==}
