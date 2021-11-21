@@ -3,6 +3,7 @@
   import { computed, ref } from 'vue';
   import { Setting, UserFilled } from '@element-plus/icons';
   import { useRouter } from 'vue-router';
+  import { ElMessage } from 'element-plus';
 
   const asideWidth = ref('200px');
 
@@ -24,6 +25,14 @@
         break;
     }
   };
+  const handleSelect = (c: string) => {
+    switch (c) {
+      case 'logout':
+        router.push({ name: 'Login' });
+        ElMessage.info('退出成功')
+        break;
+    }
+  };
   //axios,
 </script>
 
@@ -37,7 +46,7 @@
         <div class="site-title">无道后台管理系统</div>
       </div>
       <div class="right-header">
-        <el-dropdown size="small">
+        <el-dropdown size="small" @command="handleSelect">
           <span class="el-dropdown-link">
             <el-avatar
               :size="30"
@@ -46,8 +55,8 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item>修改密码</el-dropdown-item>
-              <el-dropdown-item>退出</el-dropdown-item>
+              <el-dropdown-item command="edit-password">修改密码</el-dropdown-item>
+              <el-dropdown-item command="logout">退出</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -93,7 +102,7 @@
     .left-header {
       @apply flex;
     }
-    .site-title{
+    .site-title {
       @apply font-bold ml-3 text-lg select-none;
     }
   }

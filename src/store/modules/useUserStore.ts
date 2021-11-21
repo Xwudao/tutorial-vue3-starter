@@ -10,7 +10,7 @@ export interface UserInfo {
 export const KEY_USER_ID = 'user';
 const useUserStore = defineStore({
   id: KEY_USER_ID,
-  state: (): UserInfo => ({
+  state: (): Partial<UserInfo> => ({
     id: -1,
     username: '',
     role: '',
@@ -27,6 +27,9 @@ const useUserStore = defineStore({
     },
     setRole(role: string) {
       this.$state.role = role;
+    },
+    logout() {
+      this.$state = {};
     },
     login(user: Partial<UserInfo>) {
       this.$state = {

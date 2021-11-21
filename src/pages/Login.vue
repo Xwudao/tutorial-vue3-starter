@@ -21,14 +21,18 @@
     e.preventDefault();
     formEl.value!.validate().then(async (ok: boolean) => {
       if (!ok) return;
-      let { code, data, msg } = await reqUserLogin(userInfo);
-      if (code === OK_CODE) {
-        ElMessage.success(msg);
-        userStore.login(Object.assign({}, data.info, { token: data.token }));
-        router.push({ name: 'Dashboard' });
-        return;
+      try {
+        let { code, data, msg } = await reqUserLogin(userInfo);
+        if (code === OK_CODE) {
+          ElMessage.success(msg);
+          userStore.login(Object.assign({}, data.info, { token: data.token }));
+          router.push({ name: 'Dashboard' });
+          return;
+        }
+        ElMessage.error(msg);
+      } catch (e) {
+        ElMessage.error(e as string);
       }
-      ElMessage.error(msg);
     });
   };
 </script>
