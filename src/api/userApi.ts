@@ -40,6 +40,19 @@ export const reqUserLogin = (params: LoginParams) => {
     data: { ...params },
   });
 };
+
+export interface UserListData {
+  list: UserInfo[];
+  total: number;
+}
+
+export const reqUserList = (page: number, size: number) => {
+  return useHttp<BasicResp<UserListData>>({
+    url: `/admin/v1/user`,
+    method: 'get',
+    params: { page, size },
+  });
+};
 //axios 封装完毕
 
 //register 界面 x

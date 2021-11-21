@@ -10,6 +10,7 @@ specifiers:
   '@vitejs/plugin-vue': ^1.9.3
   autoprefixer: ^10.4.0
   axios: ^0.24.0
+  dayjs: ^1.10.7
   element-plus: ^1.2.0-beta.3
   eslint: ^8.2.0
   eslint-config-prettier: ^8.3.0
@@ -33,6 +34,7 @@ dependencies:
   '@element-plus/icons': 0.0.11
   '@iconify/iconify': 2.1.0
   axios: 0.24.0
+  dayjs: 1.10.7
   element-plus: 1.2.0-beta.3_vue@3.2.21
   pinia: 2.0.3_typescript@4.4.4+vue@3.2.21
   sass: 1.43.4
@@ -632,7 +634,7 @@ packages:
   /axios/0.21.4_debug@4.3.2:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
-      follow-redirects: 1.14.5_debug@4.3.2
+      follow-redirects: 1.14.5
     transitivePeerDependencies:
       - debug
     dev: true
@@ -640,7 +642,7 @@ packages:
   /axios/0.24.0:
     resolution: {integrity: sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==}
     dependencies:
-      follow-redirects: 1.14.5_debug@4.3.2
+      follow-redirects: 1.14.5
     transitivePeerDependencies:
       - debug
     dev: false
@@ -1373,7 +1375,7 @@ packages:
     resolution: {integrity: sha512-8/sOawo8tJ4QOBX8YlQBMxL8+RLZfxMQOif9o0KUKTNTjMYElWPE0r/m5VNFxTRd0NSw8qSy8dajrwX4RYI1Hw==}
     dev: true
 
-  /follow-redirects/1.14.5_debug@4.3.2:
+  /follow-redirects/1.14.5:
     resolution: {integrity: sha512-wtphSXy7d4/OR+MvIFbCVBDzZ5520qV8XfPklSN5QtxuMUJZ+b0Wnst1e1lCDocfzuCkHqj8k0FpZqO+UIaKNA==}
     engines: {node: '>=4.0'}
     peerDependencies:
@@ -1381,8 +1383,6 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
-    dependencies:
-      debug: 4.3.2
 
   /fraction.js/4.1.2:
     resolution: {integrity: sha512-o2RiJQ6DZaR/5+Si0qJUIy637QMRudSi9kU/FFzx9EZazrIdnBgpU+3sEWCxAVhH2RtxW2Oz+T4p2o8uOPVcgA==}
