@@ -12,8 +12,8 @@ const useHttp = <T>(config: HTTPConfig): Promise<T> => {
     requests({
       url: config.url,
       method: config.method,
-      data: config.data,
-      params: config.params,
+      data: config.data || {},
+      params: config.params || {},
     })
       .then((resp) => {
         resolve(resp.data);

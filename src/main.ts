@@ -4,6 +4,7 @@ import router from './router';
 import { createPinia } from 'pinia';
 
 import '@/assets/styles/app.scss';
+import 'element-plus/dist/index.css';
 
 const pinia = createPinia();
 import '@purge-icons/generated'; // <-- This
