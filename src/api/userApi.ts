@@ -53,6 +53,20 @@ export const reqUserList = (page: number, size: number) => {
     params: { page, size },
   });
 };
+export const reqUserAdd = (params: RegParams) => {
+  return useHttp<BasicResp<null>>({
+    url: `/v1/user`,
+    method: 'post',
+    data: { ...params },
+  });
+};
+
+export const reqUserDel = (id: number) => {
+  return useHttp<BasicResp<null>>({
+    url: `/admin/v1/user/${id}`,
+    method: 'delete',
+  });
+};
 //axios 封装完毕
 
 //register 界面 x
