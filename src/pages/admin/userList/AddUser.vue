@@ -4,6 +4,7 @@
   import useUser from '@/hooks/api/useUser';
   import { OK_CODE } from '@/app/keys';
   import { ElMessage } from 'element-plus';
+  import useWidth from '@/hooks/useWidth';
 
   const emits = defineEmits(['refresh']);
 
@@ -38,6 +39,7 @@
       });
     });
   };
+  const { width } = useWidth(400, 15);
 </script>
 
 <template>
@@ -45,7 +47,7 @@
     <el-icon><plus /></el-icon>
     添加
   </el-button>
-  <el-dialog title="添加用户" width="400px" v-model:model-value="visible">
+  <el-dialog title="添加用户" :width="`${width}px`" v-model:model-value="visible">
     <el-form
       size="small"
       :model="formData"

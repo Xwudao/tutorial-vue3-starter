@@ -2,17 +2,24 @@
   import { storeToRefs } from 'pinia';
   import useCountStore from '@/store/modules/useCountStore';
   import AppIcon from '@/components/common/AppIcon.vue';
+  import useMouse from '@/hooks/useMouse';
 
   const countStore = useCountStore();
   const refCount = storeToRefs(countStore);
   console.log(import.meta.env.VITE_API_URL);
   //axios，开启从零搭建一个admin template
+
+  const { x, y } = useMouse();
 </script>
 
 <template>
   <div class="mx-10">
     <div>count: {{ countStore.num }}</div>
     <div>count: {{ refCount.num }}</div>
+    <div>
+      <p>x:{{ x }}</p>
+      <p>y:{{ y }}</p>
+    </div>
     <div>
       <!--    <button @click="refCount.num++">+1</button>-->
     </div>
