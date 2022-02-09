@@ -68,10 +68,7 @@ tailwindcss 的原子类 transition-all
 
 https://misiai.lanzoui.com/icNR3wpi0pa
 
-解压密码：
-
-
-axios
+解压密码：xwudao
 
 ### 最后
 
